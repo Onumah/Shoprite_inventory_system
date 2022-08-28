@@ -55,7 +55,7 @@ namespace ShopRite
             {
                 cm = new SqlCommand("SELECT * FROM tbUser WHERE username=@username AND password=@password", conn);
                 cm.Parameters.AddWithValue("@username", txtName.Text);
-                cm.Parameters.AddWithValue("@password", txtPassword.Text);
+                cm.Parameters.AddWithValue("@password", utils.hashPassword(txtPassword.Text));
                 conn.Open();
                 dr = cm.ExecuteReader();
                 dr.Read();
